@@ -1,6 +1,7 @@
-import {ViewEncapsulation} from 'angular2/core';
-import {Component} from 'angular2/core';
+import {Component} from "angular2/core";
+import {ViewEncapsulation} from "angular2/core";
 import {IHero} from "./IHero";
+import {HeroDetailComponent} from "./hero-detail.component";
 
 /*
  Walkthrough https://angular.io/docs/ts/latest/tutorial/toh-pt2.html
@@ -64,12 +65,12 @@ import {IHero} from "./IHero";
         }
     `],
     encapsulation: ViewEncapsulation.Native,
+    directives: [HeroDetailComponent],
     template: `
     <h1>{{title}}</h1>
-    <h2>{{hero.name}} details!</h2>
-    <div><label>id: </label>{{hero.id}}</div>
-    <div><label>name: </label>
-    <input value="{{ hero.name }}" [(ngModel)]="hero.name" placeholder="Name"></div>
+
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+
     <ul class="heroes">
         <li *ngFor="#hero of GetHeroes()" (click)="SelectHero(hero)">
             <span class="badge">{{ hero.id }}</span> {{ hero.name }}
@@ -82,7 +83,7 @@ import {IHero} from "./IHero";
 export class AppComponent {
 
     public HEROES: IHero[] = [
-        { "id": 11, "name": "Mr. Nice" },
+        { "id": 11, "name": "Mr. Nice111" },
         { "id": 12, "name": "Narco" },
         { "id": 13, "name": "Bombasto" },
         { "id": 14, "name": "Celeritas" },
@@ -94,19 +95,27 @@ export class AppComponent {
         { "id": 20, "name": "Tornado" }
     ];
 
+    public selectedHero: IHero;
+    public myTestProp: IHero = {
+        id: 1,
+        name: "Joseph Woodward"
+    };
+
     public title = 'Tour of Heroes';
+
+
 
     public GetHeroes(){
         return this.HEROES;
     }
 
-    public SelectHero(){
-
+    public SelectHero(hero: IHero){
+        this.selectedHero = hero;
     }
 
     public hero: IHero = {
         id: 1,
-        name: 'Windstorm'
+        name: 'Windstorm222'
     };
 
     public AddHero(){
