@@ -4,14 +4,14 @@ import {IHero} from "./IHero";
 @Component({
     selector: 'my-hero-detail',
     template: `
-    <div *ngIf="hero">
-        <h2>{{hero.name}} details!</h2>
-        <div><label>id: </label>{{hero.id}}</div>
+    <div *ngIf="heroVar">
+        <h2>{{heroVar.name}} details!</h2>
+        <div><label>id: </label>{{heroVar.id}}</div>
         <div><label>name: </label>
-        <input value="{{ hero.name }}" [(ngModel)]="hero.name" placeholder="Name"></div>
+        <input value="{{ heroVar.name }}" [(ngModel)]="heroVar.name" placeholder="Name"></div>
     </div>
     `,
-    inputs: ['hero']
+    inputs: ['heroVar']
 })
 
 export class HeroDetailComponent {

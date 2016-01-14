@@ -69,7 +69,7 @@ import {HeroDetailComponent} from "./hero-detail.component";
     template: `
     <h1>{{title}}</h1>
 
-    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    <my-hero-detail [heroVar]="selectedHero"></my-hero-detail>
 
     <ul class="heroes">
         <li *ngFor="#hero of GetHeroes()" (click)="SelectHero(hero)">
@@ -96,14 +96,13 @@ export class AppComponent {
     ];
 
     public selectedHero: IHero;
+
     public myTestProp: IHero = {
         id: 1,
         name: "Joseph Woodward"
     };
 
     public title = 'Tour of Heroes';
-
-
 
     public GetHeroes(){
         return this.HEROES;
